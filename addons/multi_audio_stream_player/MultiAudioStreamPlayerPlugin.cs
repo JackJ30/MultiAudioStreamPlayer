@@ -18,3 +18,7 @@ public partial class MultiAudioStreamPlayerPlugin : EditorPlugin
 	}
 }
 #endif
+
+// TODO
+// - Gizmo in 2D and 3D spaces
+// - Custom icons

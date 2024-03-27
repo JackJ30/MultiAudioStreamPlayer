@@ -7,7 +7,19 @@ public partial class MultiAudioStreamPlayer : Node
     [ExportGroup("Instancing Settings")]
     [Export(PropertyHint.Range, "1,128,1,or_greater")] private int _numberOfInstances = 2;
     [Export] private bool _prioritizeNewPlays = true;
-    private AudioStreamPlayer[] _players;
+
+    [ExportGroup("Player Settings")]
+    private AudioStream _stream;
+    [Export] public AudioStream Stream
+    {
+        get { return _stream; }
+        set {
+            _stream = value;
+            if (_players != null) foreach (AudioStreamPlayer player in _players) player.Stream = value;
+        }
+    }
+
+    private AudioStreamPlayer[] _players = null;
 
     public void Play(float fromPosition = 0.0f)
     {
@@ -41,8 +53,12 @@ public partial class MultiAudioStreamPlayer : Node
         _players = new AudioStreamPlayer[_numberOfInstances];
         for (int i = 0; i < _numberOfInstances; i++)
         {
-            _players[i] = new AudioStreamPlayer();
-            AddChild(_players[i]);
+            AudioStreamPlayer player = new AudioStreamPlayer();
+            _players[i] = player;
+
+            player.Stream = Stream;
+
+            AddChild(player);
         }
     }
 

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cla6ungyty4jw"]
+
+[ext_resource type="Script" path="res://example/Example.cs" id="1_dt7s1"]
+[ext_resource type="Script" path="res://addons/multi_audio_stream_player/players/MultiAudioStreamPlayer.cs" id="1_ywfy8"]
+[ext_resource type="AudioStream" uid="uid://eogeiiob3bs3" path="res://example/cc0_whats_the_matter.wav" id="3_kht6v"]
+
+[node name="Example" type="Node" node_paths=PackedStringArray("multiAudioStreamPlayer")]
+script = ExtResource("1_dt7s1")
+multiAudioStreamPlayer = NodePath("MultiAudioStreamPlayer")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="MultiAudioStreamPlayer" type="Node" parent="."]
+script = ExtResource("1_ywfy8")
+_prioritizeNewPlays = false
+Stream = ExtResource("3_kht6v")
