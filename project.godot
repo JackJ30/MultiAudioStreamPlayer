@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Multi Audio Stream Player"
-config/features=PackedStringArray("4.2", "Forward Plus")
+config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
 [dotnet]
 
 project/assembly_name="Multi Audio Stream Player"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/multi_audio_stream_player/plugin.cfg")
